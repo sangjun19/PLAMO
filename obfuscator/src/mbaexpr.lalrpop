@@ -1,0 +1,74 @@
+use std::str::FromStr;
+use crate::ast::{Expr, BOp, UOp}; // (0)
+
+grammar;
+pub Expr: Box<Expr> = { // (1)
+    <e1:Expr> <op:BOp> <ue:UExpr> => Box::new(Expr::BExpr(<>)),
+    <ue:UExpr> => ue
+};
+
+UExpr: Box<Expr> = {
+    <op:UOp> <ue:UExpr> => Box::new(Expr::UExpr(<>)),
+    <fe:Factor> => fe
+};
+
+Factor: Box<Expr> = {
+  "(" <e:Expr> ")" => e,
+   <n:Num> => Box::new(Expr::Number(<>)),
+   <hn:HexNum> => Box::new(Expr::Number(<>)),
+   <v:Variable> => Box::new(Expr::Variable(<>))
+};
+
+BOp: BOp = { // (3)
+    "+" => BOp::Add,
+    "-" => BOp::Sub,
+    "*" => BOp::Mul,
+    "/" => BOp::Div,
+    "%" => BOp::Mod,
+    "<<" => BOp::Shl,
+    ">>" => BOp::Shr,
+    "&" => BOp::And,
+    "|" => BOp::Or,
+    "^" => BOp::Xor,
+};
+
+UOp: UOp = { // (3)
+    "~" => UOp::Not,
+    "-" => UOp::Neg,
+};
+
+Num: u64 = {
+    r"[0-9]+" => u64::from_str(<>).unwrap()
+};
+
+HexNum: u64 = {
+    r"0x[0-9a-fA-F]+" => u64::from_str_radix(&<>[2..], 16).unwrap()
+};
+
+Variable: String = {
+    r"[a-zA-Z][a-zA-Z0-9]*" => String::from_str(<>).unwrap()
+};
+
+
+/* old version
+pub Expr: Box<Expr> = { // (1)
+    "(" <e:Expr0> ")" => e
+};
+
+Expr0: Box<Expr> = { // (1)
+    <e1:Expr> <op:BOp> <ue:UExpr> => Box::new(Expr::BExpr(<>)),
+    <ue:UExpr> => ue
+};
+
+UExpr: Box<Expr> = {
+    <fe:Factor> => fe,
+    <op:UOp> <ue:Factor> => Box::new(Expr::UExpr(<>)),
+};
+
+Factor: Box<Expr> = {
+    "(" <e:Expr> ")" => e,
+   <n:Num> => Box::new(Expr::Number(<>)),
+   <hn:HexNum> => Box::new(Expr::Number(<>)),
+   <v:Variable> => Box::new(Expr::Variable(<>))
+};
+*/

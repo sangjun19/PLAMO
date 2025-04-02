@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+obfuscator,original
+(x ^ y) + 2 * (x & y),x + y
+x + ~y + 1,x - y
+(x | y) - (x & y),x ^ y
+(x & y) * (x | y) + (x & ~y) * (~x & y),x & y
+(x ^ y) + 2 * (x & y),x + y
+~x + ~(y - 1) + 2 + ((-~x + 1 - 1) | (-(~(y - 1)) - 1)),~x | ~y
+((-x) & y) - 2 * ((~ - x) & y),-x - y
+=======
+// Program Synthesis-based Simplification of MBA Obfuscated Malware with Restart Strategies
+>>>>>>> b0ae337 (ci: Synchronize with pull-request commit remote main_arch_mode branch)

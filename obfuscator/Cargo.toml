@@ -1,0 +1,15 @@
+[package]
+name = "obfuscator"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+lalrpop = "0.20.0"
+
+[dependencies]
+csv = "1.1"
+regex = "1.11.1"
+itertools = "0.14.0"
+egg = "0.9.5"
+lalrpop-util = { version = "0.20.0", features = ["lexer", "unicode"] }
+rand = "0.9.0"
