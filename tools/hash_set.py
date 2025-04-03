@@ -36,6 +36,6 @@ def remove_duplicates(input_file, output_file):
         for line in unique_lines:
             file.write(line + '\n')
 
-input_file = "./experiment_data/MBA_Solver_result/output_ast_mba_smt_delight_infix.txt"  # Replace with your input file name
-output_file = "./experiment_data/MBA_Solver_result/output_ast_mba_smt_delight_unique.txt"  # Replace with your desired output file name
+input_file = "./data/output_data/output_ast_mba_smt_delight_infix.txt"  # Replace with your input file name
+output_file = "./data/output_data/output_ast_mba_smt_delight_unique.txt"  # Replace with your desired output file name
 remove_duplicates(input_file, output_file)

@@ -4,7 +4,6 @@ use std::{
     path::Path,
 };
 
-use crate::count_expression::print_expression_stats;
 use crate::{ast::Expr, rule_loader};
 
 // Output format: original expression, obfuscated expression, tree size
@@ -62,8 +61,8 @@ fn tree_matches_ast(tree: &Box<Expr>, pattern: &Box<Expr>) -> bool {
 
 pub fn generate_obfuscated_expression_ast(rule_name: &str, max_iterations: usize) {
 
-    let origin_file_path = Path::new("./../experiment_data/input_data/input_mba_solver.txt");
-    let output_file_name = format!("./../experiment_data/MBA_Solver_result/output_ast_mba_{}.txt", rule_name);
+    let origin_file_path = Path::new("./../data/input_data/input.txt");
+    let output_file_name = format!("./../data/output_data/output_ast_mba_{}.txt", rule_name);
     let mba_expr_file_path = Path::new(&output_file_name);
     let rule_file_name = format!("./../rule/{}.txt", rule_name);
     let rule_file_path = Path::new(&rule_file_name);
@@ -100,7 +99,7 @@ pub fn generate_obfuscated_expression_ast(rule_name: &str, max_iterations: usize
         // 난독화 초기 상태 설정
         let mut obfuscated_trees = vec![parse_tree];
 
-        for iteration in 0..max_iterations {
+        for _iteration in 0..max_iterations {
             let mut next_trees = Vec::new();
 
             // 현재 난독화된 모든 결과에 대해 재난독화 수행
