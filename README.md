@@ -1,4 +1,4 @@
-# ScramBler
+# PLAMO
 Chungnam National University  
 Programming Language and System Lab. (PLAS Lab.)  
 ast(Abstract Syntax Tree) based MBA(Mixed Boolean Arithmetic) Obfuscator written in Rust
