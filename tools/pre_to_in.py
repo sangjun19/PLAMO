@@ -54,8 +54,8 @@ def suppress_stdout():
         sys.stdout = original_stdout
 
 # File paths
-input_file_path_str = "./experiment_data/MBA_Solver_result/output_ast_mba_smt_delight.txt"
-output_file_path_str = "./experiment_data/MBA_Solver_result/output_ast_mba_smt_delight_infix.txt"
+input_file_path_str = "./data/output_data/output_ast_mba_smt_delight.txt"
+output_file_path_str = "./data/output_data/output_ast_mba_smt_delight_infix.txt"
 
 # Open files
 input_file = open(input_file_path_str, "r")
