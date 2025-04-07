@@ -18,7 +18,7 @@ fn read_formulas(file_path: &str) -> Vec<(String, String, i32)> {
             formulas.push((origin, obfuscation, _id));
         }
     }
-
+; 
     formulas
 }
 
@@ -27,7 +27,7 @@ pub fn verifying_expressions() {
     let mut init_file = File::open("./z3/z3_init.txt").unwrap();
     init_file.read_to_string(&mut init_code).unwrap();
 
-    let formulas = read_formulas("../data/output_data/test.txt");
+    let formulas = read_formulas("../data/output_data/smt_delight.txt");
 
     let mut total_count = 0;
     let mut match_count = 0;
@@ -49,13 +49,15 @@ pub fn verifying_expressions() {
         stdin.write_all(b"(exit)\n").unwrap(); // Z3 종료
 
         let start_time = std::time::Instant::now();
-        let output = child.wait_with_output().unwrap();
         let elapsed_time = start_time.elapsed();
 
         if elapsed_time > Duration::from_secs(3) {
             println!("Origin: {}, Obfuscation: {} : Timed out!", origin, obfuscation);
+            child.kill().unwrap(); // Z3 프로세스 강제 종료
             continue;
         }
+
+        let output = child.wait_with_output().unwrap();
 
         let output_str = String::from_utf8_lossy(&output.stdout);
         total_count += 1;
