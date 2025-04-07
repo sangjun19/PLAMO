@@ -1,7 +1,8 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader, BufWriter, Write};
+use std::path::Path;
 
-pub fn remove_duplicates(input_file: &str, output_file: &str) {
+pub fn remove_duplicates(input_file: &Path, output_file: &Path) {
     let mut unique_lines: std::collections::HashSet<String> = std::collections::HashSet::new();
     let mut max_len = 0;
     let mut variety: std::collections::HashSet<String> = std::collections::HashSet::new();
@@ -12,7 +13,8 @@ pub fn remove_duplicates(input_file: &str, output_file: &str) {
     for line in reader.lines() {
         if let Ok(line) = line {
             // Split the line into original, obfuscated, size
-            let parts: Vec<&str> = line.replace(" ", "").split(',').collect();
+            // let cleaned_line = line.replace(" ", "");
+            let parts: Vec<&str> = line.split(", ").collect();
             
             if parts.len() < 3 {
                 continue;
@@ -25,7 +27,7 @@ pub fn remove_duplicates(input_file: &str, output_file: &str) {
             let new_size = obfuscated.len();
             
             // Create a new line with the updated size
-            let new_line = format!("{},{},{}", original, obfuscated, new_size);
+            let new_line = format!("{}, {}, {}", original, obfuscated, parts[2]);
             
             max_len = max_len.max(new_size);
             
@@ -45,10 +47,4 @@ pub fn remove_duplicates(input_file: &str, output_file: &str) {
     for line in unique_lines {
         writeln!(writer, "{}", line).expect("Failed to write line");
     }
-}
-
-fn main() {
-    let input_file = "./experiment_data/MBA_Solver_result/output_ast_mba_smt_delight_infix.txt";
-    let output_file = "./experiment_data/MBA_Solver_result/output_ast_mba_smt_delight_unique.txt";
-    remove_duplicates(input_file, output_file);
 }
