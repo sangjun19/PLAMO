@@ -1,4 +1,0 @@
-(set-option :print-success false)
-(declare-const x Int)
-(declare-const y Int)
-(declare-const z Int)
