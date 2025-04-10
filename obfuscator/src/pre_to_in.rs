@@ -1,3 +1,4 @@
+use std::cmp::max;
 use std::fs::File;
 use std::io::{BufRead, BufReader, BufWriter, Write};
 use std::collections::VecDeque;
@@ -46,6 +47,8 @@ pub fn pre_to_in(input_file_path: &Path, output_file_path: &Path) {
     let reader = BufReader::new(input_file);
     let output = File::create(output_file_path).expect("Failed to create output file");
     let mut writer = BufWriter::new(output);
+    let mut max_len = 0;
+    let mut line_count = 0;
 
     for line in reader.lines() {
         if let Ok(line) = line {
@@ -56,11 +59,17 @@ pub fn pre_to_in(input_file_path: &Path, output_file_path: &Path) {
 
             let original_prefix = parts[0];
             let obfuscated_prefix = parts[1];
+            let size = obfuscated_prefix.len();
+
+            max_len = max(max_len, size);
+            line_count += 1;
 
             let original_infix = prefix_to_infix(original_prefix);
             let obfuscated_infix = prefix_to_infix(obfuscated_prefix);
 
-            writeln!(writer, "{}, {}, {}", original_infix, obfuscated_infix, parts[2]).expect("Failed to write line");
+            writeln!(writer, "{}, {}, {}", original_infix, obfuscated_infix, size).expect("Failed to write line");
         }
     }
+    println!("Max len: {}", max_len);
+    println!("Unique lines: {}", line_count);
 }

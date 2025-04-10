@@ -37,10 +37,6 @@ pub fn remove_duplicates(input_file: &Path, output_file: &Path) {
         }
     }
 
-    println!("Max length: {}", max_len);
-    println!("Unique lines: {}", unique_lines.len());
-    println!("Variety: {}", variety.len());
-
     // Write the unique lines back to the output file
     let output = File::create(output_file).expect("Failed to create output file");
     let mut writer = BufWriter::new(output);
