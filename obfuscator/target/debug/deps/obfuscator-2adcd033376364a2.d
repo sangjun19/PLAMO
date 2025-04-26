@@ -1,13 +1,14 @@
-C:\Users\Administrator\Desktop\PLAS Lab\PLAMO\obfuscator\target\debug\deps\libobfuscator-2adcd033376364a2.rmeta: src\main.rs src\ast.rs src\rule_loader.rs src\verify_z3_vec.rs src\verify_z3_int.rs src\verify_z3_rule.rs src\count_expression.rs src\ast_transform.rs src\remove_duplicate.rs src\pre_to_in.rs C:\Users\Administrator\Desktop\PLAS\ Lab\PLAMO\obfuscator\target\debug\build\obfuscator-4c5b5b924a21dcab\out/mbaexpr.rs
+C:\Users\Administrator\Desktop\PLAS Lab\PLAMO\obfuscator\target\debug\deps\libobfuscator-2adcd033376364a2.rmeta: src\main.rs src\verify\mod.rs src\verify\verify_z3_vec.rs src\verify\verify_z3_int.rs src\verify\verify_z3_rule.rs src\ast.rs src\rule_loader.rs src\count_expression.rs src\ast_transform.rs src\remove_duplicate.rs src\pre_to_in.rs C:\Users\Administrator\Desktop\PLAS\ Lab\PLAMO\obfuscator\target\debug\build\obfuscator-4c5b5b924a21dcab\out/mbaexpr.rs
 
-C:\Users\Administrator\Desktop\PLAS Lab\PLAMO\obfuscator\target\debug\deps\obfuscator-2adcd033376364a2.d: src\main.rs src\ast.rs src\rule_loader.rs src\verify_z3_vec.rs src\verify_z3_int.rs src\verify_z3_rule.rs src\count_expression.rs src\ast_transform.rs src\remove_duplicate.rs src\pre_to_in.rs C:\Users\Administrator\Desktop\PLAS\ Lab\PLAMO\obfuscator\target\debug\build\obfuscator-4c5b5b924a21dcab\out/mbaexpr.rs
+C:\Users\Administrator\Desktop\PLAS Lab\PLAMO\obfuscator\target\debug\deps\obfuscator-2adcd033376364a2.d: src\main.rs src\verify\mod.rs src\verify\verify_z3_vec.rs src\verify\verify_z3_int.rs src\verify\verify_z3_rule.rs src\ast.rs src\rule_loader.rs src\count_expression.rs src\ast_transform.rs src\remove_duplicate.rs src\pre_to_in.rs C:\Users\Administrator\Desktop\PLAS\ Lab\PLAMO\obfuscator\target\debug\build\obfuscator-4c5b5b924a21dcab\out/mbaexpr.rs
 
 src\main.rs:
+src\verify\mod.rs:
+src\verify\verify_z3_vec.rs:
+src\verify\verify_z3_int.rs:
+src\verify\verify_z3_rule.rs:
 src\ast.rs:
 src\rule_loader.rs:
-src\verify_z3_vec.rs:
-src\verify_z3_int.rs:
-src\verify_z3_rule.rs:
 src\count_expression.rs:
 src\ast_transform.rs:
 src\remove_duplicate.rs:
