@@ -174,19 +174,27 @@ fn infix_to_prefix(infix: &str) -> String {
 
 fn convert_to_z3_format(prefix: &str) -> String {
     // 정수 0을 32비트 비트벡터 상수로 변환
-    let result = if prefix == "0" {
-        "#x00000000".to_string()
-    } else {
-        // Z3 형식으로 변환
-        prefix
-            .replace("(+", "(bvadd")
-            .replace("(-", "(bvsub")
-            .replace("(*", "(bvmul")
-            .replace("(&", "(bvand")
-            .replace("(|", "(bvor")
-            .replace("(~", "(bvnot")
-            .replace("(^", "(bvxor")
-    };
+    // let result = if prefix == "0" {
+    //     "#x00000000".to_string()
+    // } else {
+    //     // Z3 형식으로 변환
+    //     prefix
+    //         .replace("(+", "(bvadd")
+    //         .replace("(-", "(bvsub")
+    //         .replace("(*", "(bvmul")
+    //         .replace("(&", "(bvand")
+    //         .replace("(|", "(bvor")
+    //         .replace("(~", "(bvnot")
+    //         .replace("(^", "(bvxor")
+    // };
+    let result = prefix
+        .replace("(+", "(bvadd")
+        .replace("(-", "(bvsub")
+        .replace("(*", "(bvmul")
+        .replace("(&", "(bvand")
+        .replace("(|", "(bvor")
+        .replace("(~", "(bvnot")
+        .replace("(^", "(bvxor");
     
     result
 }
